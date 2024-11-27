@@ -9,11 +9,13 @@ import { map } from 'rxjs/operators';
 })
 export class HomePage {
 
-  users: any;
+  productos: any;
   filtro: string = '';
 
   constructor(private httpClient: HttpClient) {
-    this.users = this.httpClient.get('https://randomuser.me/api/?results=100').pipe(map((res: any) => res['results']));
-  }
 
+    this.productos = this.httpClient.get('https://raw.githubusercontent.com/pgarman524/JSON_HLC/refs/heads/master/productos.json').pipe(
+      map((res: any) => res)  
+    );
+  }
 }

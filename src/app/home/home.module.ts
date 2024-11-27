@@ -1,20 +1,21 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { HomePage } from './home.page';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+import { HomePageRoutingModule } from './home-routing.module';
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HttpClientModule,
+    HomePageRoutingModule
+  ],
+  declarations: [HomePage]
 })
-export class HomePage {
-
-  productos: any;
-  filtro: string = '';
-
-  constructor(private httpClient: HttpClient) {
-
-    this.productos = this.httpClient.get('https://github.com/pgarman524/HLC/blob/main/productos.json').pipe(
-      map((res: any) => res) 
-  }
-}
+export class HomePageModule { }
